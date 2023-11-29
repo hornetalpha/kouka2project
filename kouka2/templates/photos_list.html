@@ -1,0 +1,132 @@
+<section class="text-center">
+    <div class="album py-5 bg-light">
+        <!-- Bootstrapのグリッドシステムを適用 -->
+        <div class="container">
+            <br>
+            {% url 'kouka2:photos_cat1' 1 as photos_cat1_1 %}
+            {% url 'kouka2:photos_cat1' 2 as photos_cat1_2 %}
+            {% url 'kouka2:photos_cat1' 3 as photos_cat1_3 %}
+            {% url 'kouka2:photos_cat1' 4 as photos_cat1_4 %}
+            {% url 'kouka2:photos_cat1' 5 as photos_cat1_5 %}
+            {% url 'kouka2:photos_cat2' 1 as photos_cat2_1 %}
+            {% url 'kouka2:photos_cat2' 2 as photos_cat2_2 %}
+            {% url 'kouka2:photos_cat2' 3 as photos_cat2_3 %}
+            {% url 'kouka2:photos_cat2' 4 as photos_cat2_4 %}
+            {% url 'kouka2:photos_cat2' 5 as photos_cat2_5 %}
+            {% url 'kouka2:photos_cat3' 1 as photos_cat3_1 %}
+            {% url 'kouka2:photos_cat3' 2 as photos_cat3_2 %}
+            {% url 'kouka2:element_sort' as element_sort %}
+            {% url 'kouka2:index' as new_sort %}
+            {% url 'kouka2:old_sort' as old_sort %}
+            {% url 'kouka2:my_photos1' 1 as my_photos1_1 %}
+            {% url 'kouka2:my_photos1' 2 as my_photos1_2 %}
+            {% url 'kouka2:my_photos1' 3 as my_photos1_3 %}
+            {% url 'kouka2:my_photos1' 4 as my_photos1_4 %}
+            {% url 'kouka2:my_photos1' 5 as my_photos1_5 %}
+            {% url 'kouka2:my_photos2' 1 as my_photos2_1 %}
+            {% url 'kouka2:my_photos2' 2 as my_photos2_2 %}
+            {% url 'kouka2:my_photos2' 3 as my_photos2_3 %}
+            {% url 'kouka2:my_photos2' 4 as my_photos2_4 %}
+            {% url 'kouka2:my_photos2' 5 as my_photos2_5 %}
+            {% url 'kouka2:my_photos3' 1 as my_photos3_1 %}
+            {% url 'kouka2:my_photos3' 2 as my_photos3_2 %}
+            {% url 'kouka2:my_element_sort' as my_element_sort %}
+            {% url 'kouka2:mypage' as my_new_sort %}
+            {% url 'kouka2:my_old_sort' as my_old_sort %}
+            {% if object_list.count == 0 %}
+                <h3>投稿はありません</h3>
+            {% elif request.path == photos_cat1_1 %}
+                <h3>火属性一覧</h3>
+            {% elif request.path == photos_cat1_2 %}
+                <h3>水属性一覧</h3>
+            {% elif request.path == photos_cat1_3 %}
+                <h3>木属性一覧</h3>
+            {% elif request.path == photos_cat1_4 %}
+                <h3>光属性一覧</h3>
+            {% elif request.path == photos_cat1_5 %}
+                <h3>闇属性一覧</h3>
+            {% elif request.path == photos_cat2_1 %}
+                <h3>進化前一覧</h3>
+            {% elif request.path == photos_cat2_2 %}
+                <h3>進化/神化一覧</h3>
+            {% elif request.path == photos_cat2_3 %}
+                <h3>獣神化一覧</h3>
+            {% elif request.path == photos_cat2_4 %}
+                <h3>獣神化・改一覧</h3>
+            {% elif request.path == photos_cat2_5 %}
+                <h3>真獣神化一覧</h3>
+            {% elif request.path == photos_cat3_1 %}
+                <h3>ガチャキャラ一覧</h3>
+            {% elif request.path == photos_cat3_2 %}
+                <h3>その他キャラ一覧</h3>
+            {% elif request.path == element_sort %}
+                <h3>属性順</h3>
+            {% elif request.path == new_sort %}
+                <h3>新しい順</h3>
+            {% elif request.path == old_sort %}
+                <h3>古い順</h3>
+            {% elif request.path == my_photos1_1 %}
+                <h3>火属性一覧</h3>
+            {% elif request.path == my_photos1_2 %}
+                <h3>水属性一覧</h3>
+            {% elif request.path == my_photos1_3 %}
+                <h3>木属性一覧</h3>
+            {% elif request.path == my_photos1_4 %}
+                <h3>光属性一覧</h3>
+            {% elif request.path == my_photos1_5 %}
+                <h3>闇属性一覧</h3>
+            {% elif request.path == my_photos2_1 %}
+                <h3>進化前一覧</h3>
+            {% elif request.path == my_photos2_2 %}
+                <h3>進化/神化一覧</h3>
+            {% elif request.path == my_photos2_3 %}
+                <h3>獣神化一覧</h3>
+            {% elif request.path == my_photos2_4 %}
+                <h3>獣神化・改一覧</h3>
+            {% elif request.path == my_photos2_5 %}
+                <h3>真獣神化一覧</h3>
+            {% elif request.path == my_photos3_1 %}
+                <h3>ガチャキャラ一覧</h3>
+            {% elif request.path == my_photos3_2 %}
+                <h3>その他キャラ一覧</h3>
+            {% elif request.path == my_element_sort %}
+                <h3>属性順</h3>
+            {% elif request.path == my_new_sort %}
+                <h3>新しい順</h3>
+            {% elif request.path == my_old_sort %}
+                <h3>古い順</h3>                 
+            {% endif %}
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">  
+                {% for record in object_list %}
+                <section class="py-5 text-center container">
+                    <div class="col">
+                        <!-- Blog post-->
+                        <div class="card shadow-sm">
+                            <a href="{% url 'kouka2:photo_detail' record.pk %}"><img class="card-img-top" src="{{ record.title_image.url }}" alt="..." width="400" height="350"/></a>
+                            <div class="card-body">
+                                <div class="small text-muted">{{record.posted_at}}に投稿>>>>>
+                                    <a href="{% url 'kouka2:user_list' user=record.user.id %}">
+                                        <small class="text-muted">
+                                            {{record.user.username}}</small>
+                                    </a>
+                                </div>
+                            <h2 class="card-title h4">
+                                <!-- titleフィールドを出力 -->
+                                {{record.title}}
+                            </h2>
+                            <a class="btn btn-primary" href="{% url 'kouka2:photo_detail' record.pk %}">詳細</a>
+                            <a class="btn btn-outline-secondary" href="{% url 'kouka2:photos_cat1' category1=record.category1.id %}">
+                                {{record.category1.title}}</a>
+                            <a class="btn btn-outline-secondary" href="{% url 'kouka2:photos_cat2' category2=record.category2.id %}">
+                                {{record.category2.title}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- forブロック終了 -->
+                {% endfor %}
+            </div>
+        <!-- グリッドシステムここまで -->
+        </div>
+    </div>
+</section>

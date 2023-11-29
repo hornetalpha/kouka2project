@@ -1,0 +1,180 @@
+<!-- ベーステンプレートを適用する -->
+{% extends 'base.html' %}
+<!-- ヘッダー情報のページタイトルを設定する -->
+{% block title %}Post{% endblock %}
+
+        {% block contents %}
+        <!-- Bootstrapのグリッドシステム -->
+        <br>
+        <div class="container">
+            <!-- 行を配置 -->
+            <div class="row">
+                <!-- 列の左右に余白offset-2を入れる -->
+                <div class="col offset-3">
+                    <!-- ファイルをアップデートする場合は
+                        　enctype="multipart/form-data"が必要 -->
+                    <form method="POST"
+                            enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <table>
+                            <tr>
+                                <th><h5>属性 (必須)</h5></th>
+                                <td>{{ form.category1 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>進化状態 (必須)</h5></th>
+                                <td>{{ form.category2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>入手方法 (必須)</h5></th>
+                                <td>{{ form.category3 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>タイトル名 (必須)</h5></th>
+                                <td>{{ form.title }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>進化形態の名前  (必須)</h5></th>
+                                <td>{{ form.mode1 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>撃種/戦型/種族 (必須)</h5></th>
+                                <td>{{ form.status1 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>アビリティ (必須)</h5></th>
+                                <td>{{ form.ability1 }}</td>
+                            </tr>
+                            <tr>
+                                <th>ゲージアビリティ</th>
+                                <td>{{ form.gage1 }}</td>
+                            </tr>
+                            <tr>
+                                <th>コネクトスキル</th>
+                                <td>{{ form.connect_skill1 }}</td>
+                            </tr>
+                            <tr>
+                                <th>コネクトスキル条件</th>
+                                <td>{{ form.connect_joken1 }}</td>
+                            </tr>
+                            <tr>
+                                <th>ショットスキル</th>
+                                <td>{{ form.shot_skill1 }}</td>
+                            </tr>
+                            <tr>
+                                <th>アシストスキル</th>
+                                <td>{{ form.assist_skill1 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>ストライクショット (必須)</h5></th>
+                                <td>{{ form.strike_shot1 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>友情コンボ (必須)</h5></th>
+                                <td>{{ form.yujou_combo1 }}</td>
+                            </tr>
+                            <tr>
+                                <th>副友情コンボ</th>
+                                <td>{{ form.fukuyujou_combo1 }}</td>
+                            </tr>
+                            <tr>
+                                <th>ラックスキル</th>
+                                <td>{{ form.luck_skill1 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>プロフィール (必須)</h5></th>
+                                <td>{{ form.profile1 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>タイトル画像 (必須)</h5></th>
+                                <td>{{ form.title_image }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>通常イラスト (必須)</h5></th>
+                                <td>{{ form.image1 }}</td>
+                            </tr>
+                            <tr>
+                                <th>季節限定/書き下ろしイラスト</th>
+                                <td>{{ form.image2 }}</td>
+                            </tr>
+                            <tr>
+                                <th>MVイラスト</th>
+                                <td>{{ form.image3 }}</td>
+                            </tr>
+                        </table>
+                        <br>
+                        <button type="submit">投稿する</button>
+                        <br>
+                        <P>--------------------------分岐形態がある場合--------------------------</P>
+                        <table>
+                            <tr>
+                                <th>進化形態の名前</th>
+                                <td>{{ form.mode2 }}</td>
+                            </tr>
+                            <tr>
+                                <th>撃種/戦型/種族</th>
+                                <td>{{ form.status2 }}</td>
+                            </tr>
+                            <tr>
+                                <th>アビリティ</th>
+                                <td>{{ form.ability2 }}</td>
+                            </tr>
+                            <tr>
+                                <th>ゲージアビリティ</th>
+                                <td>{{ form.gage2 }}</td>
+                            </tr>
+                            <tr>
+                                <th>コネクトスキル</th>
+                                <td>{{ form.connect_skill2 }}</td>
+                            </tr>
+                            <tr>
+                                <th>コネクトスキル条件</th>
+                                <td>{{ form.connect_joken2 }}</td>
+                            </tr>
+                            <tr>
+                                <th>ショットスキル</th>
+                                <td>{{ form.shot_skill2 }}</td>
+                            </tr>
+                            <tr>
+                                <th>アシストスキル</th>
+                                <td>{{ form.assist_skill2 }}</td>
+                            </tr>
+                            <tr>
+                                <th>ストライクショット</th>
+                                <td>{{ form.strike_shot2 }}</td>
+                            </tr>
+                            <tr>
+                                <th>友情コンボ</th>
+                                <td>{{ form.yujou_combo2 }}</td>
+                            </tr>
+                            <tr>
+                                <th>副友情コンボ</th>
+                                <td>{{ form.fukuyujou_combo2 }}</td>
+                            </tr>
+                            <tr>
+                                <th>ラックスキル</th>
+                                <td>{{ form.luck_skill2 }}</td>
+                            <tr>
+                            <tr>
+                                <th>プロフィール</th>
+                                <td>{{ form.profile2 }}</td>
+                            </tr>
+                                <th>通常イラスト</th>
+                                <td>{{ form.image4 }}</td>
+                            </tr>
+                            <tr>
+                                <th>季節限定/書き下ろしイラスト</th>
+                                <td>{{ form.image5 }}</td>
+                            </tr>
+                            <tr>
+                                <th>MVイラスト</th>
+                                <td>{{ form.image6 }}</td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <button type="submit">投稿する</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endblock %}

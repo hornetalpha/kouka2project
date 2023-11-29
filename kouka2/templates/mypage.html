@@ -1,0 +1,85 @@
+<!-- ベーステンプレートを適用する -->
+{% extends 'base.html' %}
+<!-- ヘッダー情報のページタイトルを設定する -->
+{% block title %}Mypage{% endblock %}
+
+        {% block contents %}
+
+        <!-- タイトルテンプレートは組み込まない -->
+
+        <!-- ユーザーの投稿件数を表示 -->
+        {% if user.is_authenticated %}
+            <br>
+            <div style="text-align:center">
+                <h1>{{user.username}}さんのマイページ</h1>
+                <a href="{% url 'kouka2:post' %}"
+                    class="btn btn-primary my-2">投稿する</a>
+            </div>
+            <section class="mb-5 text-center container">
+                <div class="row py-lg-1">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <div class="text-center">
+                            <div class="card mb">
+                                <form class="d-flex" action="{% url 'kouka2:my_search' %}" method="get">
+                                    <input name="q" class="form-control me-2" type="search" placeholder="名前で検索" aria-label="Search">
+                                    <button class="btn btn-outline-primary" type="submit">検索</button>
+                                </form>
+                                <div class="select_wrap">
+                                    <!-- リスト -->
+                                    <div class="select_lists">
+                                    <p>属性絞り込み</p>
+                                    <select name="category1" onChange="location.href=value;">
+                                        <option value="#">選択してください</option>
+                                        <option value="{% url 'kouka2:my_photos1' 1 %}">火属性</option>
+                                        <option value="{% url 'kouka2:my_photos1' 2 %}">水属性</option>
+                                        <option value="{% url 'kouka2:my_photos1' 3 %}">木属性</option>
+                                        <option value="{% url 'kouka2:my_photos1' 4 %}">光属性</option>
+                                        <option value="{% url 'kouka2:my_photos1' 5 %}">闇属性</option>
+                                    </select>
+                                    </div>
+                                    <!-- リスト -->
+                                    <div class="select_lists">
+                                    <p>進化状態絞り込み</p>
+                                    <select name="category2" onChange="location.href=value;">
+                                        <option value="#">選択してください</option>
+                                        <option value="{% url 'kouka2:my_photos2' 1 %}">進化前</option>
+                                        <option value="{% url 'kouka2:my_photos2' 2 %}">進化/神化</option>
+                                        <option value="{% url 'kouka2:my_photos2' 3 %}">獣神化</option>
+                                        <option value="{% url 'kouka2:my_photos2' 4 %}">獣神化・改</option>
+                                        <option value="{% url 'kouka2:my_photos2' 5 %}">真獣神化</option>
+                                    </select>
+                                    </div>
+                                    <!-- リスト -->
+                                    <div class="select_lists">
+                                    <p>入手方法絞り込み</p>
+                                    <select name="category3"  onChange="location.href=value;">
+                                        <option value="#">選択してください</option>
+                                        <option value="{% url 'kouka2:my_photos3' 1%}">ガチャ</option>
+                                        <option value="{% url 'kouka2:my_photos3' 2%}">その他</option>
+                                    </select>
+                                    </div>
+                                    <!-- リスト -->
+                                    <div class="select_lists">
+                                    <p>並び替え</p>
+                                    <select name="category4" onChange="location.href=value;">
+                                        <option value="#">選択してください</option>
+                                        <option value="{% url 'kouka2:my_element_sort' %}">属性順</option>
+                                        <option value="{% url 'kouka2:mypage' %}">新しい順</option>
+                                        <option value="{% url 'kouka2:my_old_sort' %}">古い順</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+
+        <!-- 投稿一覧テンプレートの組み込み -->
+        {% include "photos_list.html" %}
+
+        <!-- ページネーションの組み込み -->
+        {% include "pagination.html" %}
+
+        {% endblock %}

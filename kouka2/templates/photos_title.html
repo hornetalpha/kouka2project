@@ -1,0 +1,23 @@
+<!-- タイトルとナビゲーションボタン -->
+<section class="mt-5 text-center container">
+    <div class="row py-lg-1">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <!-- タイトルと本文 -->
+            <h1 class="fw-bolder">モンスト図鑑</h1>
+            <p class="lead mb-0">モンストのキャラのステータスやプロフィールが見れる図鑑です<br>好きなキャラや投稿したいキャラがいれば、ぜひ投稿してください</p>
+            <P>
+                <!-- ナビゲーションボタン -->
+                {% if user.is_authenticated %}
+                <!-- ログイン中のボタン -->
+                <a href="{% url 'kouka2:post' %}" class="btn btn-primary my-2">投稿する</a>
+                <a href="{% url 'accounts:logout' %}" class="btn btn-secondary my-2">ログアウト</a>
+                {% else %}
+                <!-- ログイン状態ではない場合のボタン -->
+                <a href="{% url 'accounts:signup' %}" class="btn btn-primary my-2">今すぐサインアップ</a>
+                <a href="{% url 'accounts:login' %}" class="btn btn-secondary my-2">登録済みの方はログイン</a>
+                {% endif %}
+                
+            </p>
+        </div>
+    </div>
+</section>

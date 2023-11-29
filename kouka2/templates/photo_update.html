@@ -1,0 +1,132 @@
+<!-- ベーステンプレートを適用する -->
+{% extends 'base.html' %}
+<!-- ヘッダー情報のページタイトルを設定する -->
+{% block title %}Update{% endblock %}
+
+        {% block contents %}
+        <!-- Bootstrapのグリッドシステム -->
+        <br>
+        <div class="container">
+            <!-- 行を配置 -->
+            <div class="row">
+                <!-- 列の左右に余白offset-2を入れる -->
+                <div class="col offset-1">
+                    <!-- ファイルをアップデートする場合は
+                        　enctype="multipart/form-data"が必要 -->
+                    <form method="POST"
+                            enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <table>
+                            <tr>
+                                <td></td>
+                                <th><h3>一つ目の形態(必須)</h3></th>
+                                <th><h3>二つ目の形態(分岐ある場合)</h3></th>
+                            </tr>
+                            <tr>
+                                <th><h5>属性</h5></th>
+                                <td>{{ form.category1 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>進化状態</h5></th>
+                                <td>{{ form.category2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>入手方法</h5></th>
+                                <td>{{ form.category3 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>名前(必須)</h5></th>
+                                <td>{{ form.title }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>進化形態の名前(必須)</h5></th>
+                                <td>{{ form.mode1 }}</td>
+                                <td>{{ form.mode2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>撃種/戦型/種族(必須)</h5></th>
+                                <td>{{ form.status1 }}</td>
+                                <td>{{ form.status2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>アビリティ(必須)</h5></th>
+                                <td>{{ form.ability1 }}</td>
+                                <td>{{ form.ability2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h6>ゲージアビリティ</h6></th>
+                                <td>{{ form.gage1 }}</td>
+                                <td>{{ form.gage2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h6>コネクトスキル</h6></th>
+                                <td>{{ form.connect_skill1 }}</td>
+                                <td>{{ form.connect_skill2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h6>コネクトスキル条件</h6></th>
+                                <td>{{ form.connect_joken1 }}</td>
+                                <td>{{ form.connect_joken2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h6>ショットスキル</h6></th>
+                                <td>{{ form.shot_skill1 }}</td>
+                                <td>{{ form.shot_skill2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h6>アシストスキル</h6></th>
+                                <td>{{ form.assist_skill1 }}</td>
+                                <td>{{ form.assist_skill2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>ストライクショット(必須)</h5></th>
+                                <td>{{ form.strike_shot1 }}</td>
+                                <td>{{ form.strike_shot2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>友情コンボ(必須)</h5></th>
+                                <td>{{ form.yujou_combo1 }}</td>
+                                <td>{{ form.yujou_combo2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h6>副友情コンボ</h6></th>
+                                <td>{{ form.fukuyujou_combo1 }}</td>
+                                <td>{{ form.fukuyujou_combo2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h6>ラックスキル</h6></th>
+                                <td>{{ form.luck_skill1 }}</td>
+                                <td>{{ form.luck_skill2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>プロフィール(必須)</h5></th>
+                                <td>{{ form.profile1 }}</td>
+                                <td>{{ form.profile2 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>タイトル画像(必須)</h5></th>
+                                <td>{{ form.title_image }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>通常イラスト(必須)</h5></th>
+                                <td>{{ form.image1 }}</td>
+                                <td>{{ form.image4 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>季節限定/書き下ろしイラスト</h5></th>
+                                <td>{{ form.image2 }}</td>
+                                <td>{{ form.image5 }}</td>
+                            </tr>
+                            <tr>
+                                <th><h5>MVイラスト</h5></th>
+                                <td>{{ form.image3 }}</td>
+                                <td>{{ form.image6 }}</td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <button type="submit">保存する</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
